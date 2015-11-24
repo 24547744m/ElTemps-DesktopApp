@@ -1,18 +1,19 @@
 package pojos;
 
-import javax.swing.text.html.ImageView;
+
+import javafx.scene.image.ImageView;
 
 /**
  * Created by dam on 15/11/15.
  */
 public class Item {
     private ImageView image;
-    private Time time;
+    private String dateTime;
 
 
-    public Item(ImageView image, Time time) {
+    public Item(ImageView image, String dateTime) {
         this.image = image;
-        this.time = time;
+        this.dateTime = dateTime;
     }
 
     public ImageView getImage() {
@@ -23,11 +24,11 @@ public class Item {
         this.image = image;
     }
 
-    public Time getTime() {
-        return time;
+    public String getDateTime() {
+        return dateTime;
     }
 
-    public void setTime(Time time) {
-        this.time = time;
+    public void setDateTime(String dateTime) {
+        this.dateTime = dateTime;
     }
 }

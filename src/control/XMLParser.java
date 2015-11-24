@@ -82,7 +82,7 @@ public class XMLParser {
                         if(element2.getTagName().equalsIgnoreCase("windirection"))
                             time.setWindDirection(element2.getAttribute("name") + " - " + element2.getAttribute("deg") + " " + element2.getAttribute("code"));
                         if(element2.getTagName().equalsIgnoreCase("windspeed")){
-                            String kph = mpsToKph(element2.getAttribute("mps"));//obteniendo el formato convertido de mps to kph
+                            java.lang.String kph = mpsToKph(element2.getAttribute("mps"));//obteniendo el formato convertido de mps to kph
                             time.setWindSpeed(kph + "kph");
                         }
                         if(element2.getTagName().equalsIgnoreCase("temperature"))
@@ -123,12 +123,12 @@ public class XMLParser {
 
     /**
      * Convierte Metros por segundo a Kilómetros por hora
-     * @param mps {@link String}
-     * @return kph - {@link String}
+     * @param mps {@link java.lang.String}
+     * @return kph - {@link java.lang.String}
      * */
-    private String mpsToKph(String mps) {
+    private java.lang.String mpsToKph(java.lang.String mps) {
         double rs = (Double.parseDouble(mps) * 2.6);
-        return String.format("%.2f", rs);
+        return java.lang.String.format("%.2f", rs);
     }
 
 

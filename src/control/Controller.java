@@ -4,13 +4,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
-import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import org.xml.sax.SAXException;
 import pojos.Item;
-import pojos.Location;
 import pojos.Time;
 
-import javax.swing.text.html.ImageView;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,51 +18,45 @@ public class Controller {
 
     private List<Time> objTimes;
 //    private Location objLocation;
-//    private ObservableList<Time> observableList;
-    private List<Item> itemsList;
+    private List<Item> itemsList;//Lista de objetos de tipo -> Item(ImageView, Time)
     private ObservableList<Item> itemObservableList;
     private XMLParser parser;
 
-    @FXML private ListView<Time> lvItems;
-//    @FXML private
+    @FXML private ListView<Item> lvItems;
 
-    public void initialize() throws ParserConfigurationException, SAXException, IOException {
-        itemsList = new ArrayList<>();
-        System.out.println("HOLAAAAAAAAAAAAAa");
-        objTimes = getXMLTimes();
-
-
-//        observableList = FXCollections.observableList(objTimes);
-//        lvItems.setItems(observableList);
+    public void initialize() throws SAXException, IOException, ParserConfigurationException {
+        itemsList = new ArrayList<Item>();
+        parser = new XMLParser();
+        this.objTimes = parser.getTimesList();
+//        printTimes(objTimes);
+        if (objTimes != null){
+            setListViewItems(objTimes);
+            itemObservableList = FXCollections.observableList(itemsList);//
+            lvItems.setItems(itemObservableList);
+            lvItems.autosize();
+        }
     }
 
 
-    private void setListViewItems(){
+    private void printTimes(List<Time> objTimes){
+        Time time;
+        for (int i = 0; i < objTimes.size(); i++){
+            time = objTimes.get(i);
+            System.out.println(time.getIdImage() + " " + time.getDateFrom() + " " + time.getTemperature());
+        }
+    }
+
+    private void setListViewItems(List<Time> objTimes){
         Time time;
         Item item;
         for (int i = 0; i < objTimes.size(); i++){
             time = objTimes.get(i);
-//            item = new Item(new ImageView(), time);
-//            itemsList.add();
-
+            item = new Item(new ImageView("img/" + time.getIdImage() + ".png"), time.getDateFrom() + " - " + time.getDateTo());
+            this.itemsList.add(item);
         }
-
-
     }
 
-    private List<Time> getXMLTimes() throws IOException, SAXException, ParserConfigurationException {
-        parser = new XMLParser();
-        this.objTimes = parser.getTimesList();
-        return this.objTimes;
-    }
 
-    private ImageView newImageView(){
-//        ImageView iv = new ImageView();
-
-
-
-        return null;
-    }
 
 
 
