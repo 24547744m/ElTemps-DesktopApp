@@ -33,13 +33,13 @@ public class XMLParser {
         doc = db.parse(file);
         doc.getDocumentElement().normalize();//Formata el XML en caso que esté con espacios
     }
-    public XMLParser(File file) throws ParserConfigurationException, IOException, SAXException {
-        this.file = file;
-        dbf = DocumentBuilderFactory.newInstance();
-        db = dbf.newDocumentBuilder();
-        doc = db.parse(file);
-        doc.getDocumentElement().normalize();//Formata el XML en caso que esté con espacios
-    }
+//    public XMLParser(File file) throws ParserConfigurationException, IOException, SAXException {
+//        this.file = file;
+//        dbf = DocumentBuilderFactory.newInstance();
+//        db = dbf.newDocumentBuilder();
+//        doc = db.parse(file);
+//        doc.getDocumentElement().normalize();//Formata el XML en caso que esté con espacios
+//    }
 
     /**
      * Obtiene la lista de nodos <time></time>
@@ -90,7 +90,7 @@ public class XMLParser {
                         if(element2.getTagName().equalsIgnoreCase("humidity"))
                             time.setHumidity(element2.getAttribute("value") + element2.getAttribute("unit"));
                     }
-                    System.out.println();
+//                    System.out.println();
 
                 }
             }//END IF (ELEMENT)
