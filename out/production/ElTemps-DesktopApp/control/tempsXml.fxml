@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
@@ -14,7 +16,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
+              <MenuItem fx:id="menuItemClose" mnemonicParsing="false" onAction="#closeProgram" text="Close" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
@@ -31,17 +33,52 @@
       </MenuBar>
       <AnchorPane layoutY="30.0" prefHeight="450.0" prefWidth="900.0">
          <children>
-            <SplitPane dividerPositions="0.4710467706013363" prefHeight="450.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <SplitPane dividerPositions="0.4064587973273942" prefHeight="450.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" SplitPane.resizableWithParent="false">
                      <children>
-                        <ScrollPane prefHeight="448.0" prefWidth="419.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <content>
-                              <ListView fx:id="lvItems" prefHeight="429.0" prefWidth="419.0" />
-                           </content></ScrollPane>
+                        <ListView fx:id="lvItems" prefHeight="448.0" prefWidth="361.0" />
                      </children>
                   </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" SplitPane.resizableWithParent="false" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="448.0" prefWidth="581.0" SplitPane.resizableWithParent="false">
+                     <children>
+                        <Label layoutX="33.0" layoutY="254.0" text="Direccion del Viento:">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <ImageView fx:id="ivLarge" fitHeight="142.0" fitWidth="174.0" layoutX="34.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label layoutX="32.0" layoutY="279.0" text="Velocidad del Viento:">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="33.0" layoutY="303.0" text="Humedad:">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="32.0" layoutY="327.0" text="Nubes:">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="33.0" layoutY="351.0" text="Temperatura:">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblWindDirection" layoutX="229.0" layoutY="254.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="16.0" prefWidth="249.0" />
+                        <Label fx:id="lblWindSpeed" layoutX="229.0" layoutY="279.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="16.0" prefWidth="249.0" />
+                        <Label fx:id="lblHumidity" layoutX="229.0" layoutY="303.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="16.0" prefWidth="187.0" />
+                        <Label fx:id="lblClouds" layoutX="229.0" layoutY="328.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="16.0" prefWidth="187.0" />
+                        <Label fx:id="lblTemperature" layoutX="229.0" layoutY="349.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="16.0" prefWidth="249.0" />
+                        <Label fx:id="lblTemperatureLarge" layoutX="221.0" layoutY="27.0" prefHeight="142.0" prefWidth="281.0" textAlignment="CENTER">
+                           <font>
+                              <Font name="Ubuntu Bold" size="64.0" />
+                           </font>
+                        </Label>
+                     </children></AnchorPane>
               </items>
             </SplitPane>
          </children>

@@ -79,16 +79,18 @@ public class XMLParser {
                         element2 = (Element) timeChilds.item(j);
                         if(element2.getTagName().equalsIgnoreCase("symbol"))
                             time.setIdImage(element2.getAttribute("var"));
-                        if(element2.getTagName().equalsIgnoreCase("windirection"))
+                        if(element2.getTagName().equalsIgnoreCase("windDirection"))
                             time.setWindDirection(element2.getAttribute("name") + " - " + element2.getAttribute("deg") + " " + element2.getAttribute("code"));
                         if(element2.getTagName().equalsIgnoreCase("windspeed")){
-                            java.lang.String kph = mpsToKph(element2.getAttribute("mps"));//obteniendo el formato convertido de mps to kph
+                            String kph = mpsToKph(element2.getAttribute("mps"));//obteniendo el formato convertido de mps to kph
                             time.setWindSpeed(kph + "kph");
                         }
                         if(element2.getTagName().equalsIgnoreCase("temperature"))
-                            time.setTemperature(element2.getAttribute("value") + " ºC\tmin: " + element2.getAttribute("min") + "\tmax: " + element2.getAttribute("max"));
+                            time.setTemperature(String.format("%.1f", Float.parseFloat(element2.getAttribute("value")) ).replace(",",".") + " ºC\tmin: " + element2.getAttribute("min") + "\tmax: " + element2.getAttribute("max"));
                         if(element2.getTagName().equalsIgnoreCase("humidity"))
                             time.setHumidity(element2.getAttribute("value") + element2.getAttribute("unit"));
+                        if (element2.getTagName().equalsIgnoreCase("clouds"))
+                            time.setClouds(element2.getAttribute("value") + " " + element2.getAttribute("all") + element2.getAttribute("unit"));
                     }
 //                    System.out.println();
 
